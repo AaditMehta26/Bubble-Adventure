@@ -1612,6 +1612,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7356363119981545501, guid: d6ef3d7ba54a47542bfca0ebaa859af5, type: 3}
+      propertyPath: slomotime
+      value: 0.498
+      objectReference: {fileID: 0}
     - target: {fileID: 7990726371852645276, guid: d6ef3d7ba54a47542bfca0ebaa859af5, type: 3}
       propertyPath: m_Name
       value: Player
