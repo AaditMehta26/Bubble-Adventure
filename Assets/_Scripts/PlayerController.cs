@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 
 public class PlayerController : MonoBehaviour
@@ -8,26 +9,20 @@ public class PlayerController : MonoBehaviour
     
     #region [Serialised]Variables
         [SerializeField]float gravity = -9.81f;
-        [SerializeField] private Rigidbody bubbleRigidbody; // Reference to the Rigidbody
-        [SerializeField] private float maxSqueeze = 0.5f;   // Maximum amount to squeeze/stretch
-        [SerializeField] private float squeezeSpeed = 5f;   // Speed of the smooth scaling transition
-        [SerializeField] private float minVelocity = 0.1f;
+        [SerializeField]private ParticleSystem deathParticles;
         [SerializeField] private float maxVelocity = 0.5f;
-        [SerializeField] float maxTrembleIntensity = 0.1f; 
-        [SerializeField] float trembleFrequency = 20f; 
         [SerializeField]private float forceAmount;
         [Range(0f, 1f)]
-        [SerializeField]private float slomotime;
+        [SerializeField]private float slomoTime;
     #endregion
     #region Variables
+
     private InputSystem_Actions _playerActions;
-    
-    private Rigidbody2D _playerrb;
-    
+    private Rigidbody2D _playerRb;
     private Vector3 _originalScale;
     private Vector2 _startPosition;
     private Vector2 _lastPosition;
-    private Vector2 _dragvector;
+    private Vector2 _dragVector;
     private Vector3 _originalPosition;
     #endregion
 
@@ -40,19 +35,13 @@ public class PlayerController : MonoBehaviour
     private void InitComponents()
     {
         _playerActions = new ();
-        _playerrb = GetComponent<Rigidbody2D>();
-        _playerrb.gravityScale = gravity;
+        _playerRb = GetComponent<Rigidbody2D>();
+        _playerRb.gravityScale = gravity;
     }
 
     private void Start()
     {
         _originalPosition = transform.localPosition;
-    }
-
-    void Update()
-    {
-        
-        
     }
     
 
@@ -68,7 +57,7 @@ public class PlayerController : MonoBehaviour
         _startPosition = Mouse.current.position.ReadValue();
         print("Pressed" + _startPosition);
         _playerActions.Player.Look.performed += OnDrag;
-        Time.timeScale = slomotime;
+        Time.timeScale = slomoTime;
     }
     private void OnDrag(InputAction.CallbackContext obj)
     {
@@ -81,16 +70,16 @@ public class PlayerController : MonoBehaviour
         print("Lifted" + _lastPosition);
         _playerActions.Player.Look.performed -= OnDrag;
         
-        _dragvector = _lastPosition - _startPosition;
+        _dragVector = _lastPosition - _startPosition;
         Time.timeScale = 1f;
-        ApplyForce(_dragvector);
+        ApplyForce(_dragVector);
     }
 
     private void ApplyForce(Vector2 dragVector)
     {
-        _playerrb.linearVelocity = Vector2.zero;
-        _playerrb.angularVelocity = 0;
-        _playerrb.AddForceAtPosition(Vector2.ClampMagnitude(forceAmount * -dragVector,maxVelocity),transform.position, ForceMode2D.Impulse);
+        _playerRb.linearVelocity = Vector2.zero;
+        _playerRb.angularVelocity = 0;
+        _playerRb.AddForceAtPosition(Vector2.ClampMagnitude(forceAmount * -dragVector,maxVelocity),transform.position, ForceMode2D.Impulse);
     }
 
 
@@ -104,6 +93,7 @@ public class PlayerController : MonoBehaviour
 
     void Burst()
     {
-        Destroy(this.gameObject);
+        Instantiate(deathParticles,transform.position,Quaternion.identity).Play();
+        Destroy(gameObject);
     }
 }
