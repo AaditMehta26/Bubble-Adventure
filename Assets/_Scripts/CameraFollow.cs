@@ -1,10 +1,16 @@
+using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField]Transform target;
     [SerializeField]float smoothTime = 0.5f;
+
+    private void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     void LateUpdate()
     {
         Vector2 desiredPosition = new (target.position.x, target.position.y);
