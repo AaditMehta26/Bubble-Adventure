@@ -28,7 +28,10 @@ namespace _Scripts.Manager
         {
             _sceneAnimator.Play("FadeIn");
             yield return new WaitForSeconds(1.0f);
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + index);
+            if(SceneManager.sceneCountInBuildSettings > SceneManager.GetActiveScene().buildIndex + index)
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + index);
+            else
+                SceneManager.LoadScene(0);
             _sceneAnimator.Play("FadeOut");
         }
     }
