@@ -14,21 +14,21 @@ namespace _Scripts.Manager
             _sceneAnimator = GetComponent<Animator>();
         }
 
-        public void LoadScene(string sceneName)
+        public void ReLoadScene()
         {
-            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+            StartCoroutine(LoadLevel(0));
         }
 
         public void NextLevel()
         {
-            StartCoroutine(LoadLevel());
+            StartCoroutine(LoadLevel(1));
         }
 
-        IEnumerator LoadLevel()
+        IEnumerator LoadLevel(int index)
         {
             _sceneAnimator.Play("FadeIn");
             yield return new WaitForSeconds(1.0f);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + index);
             _sceneAnimator.Play("FadeOut");
         }
     }
