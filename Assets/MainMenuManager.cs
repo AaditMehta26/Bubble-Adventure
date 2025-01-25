@@ -14,12 +14,9 @@ public class MainMenuManager : MonoBehaviour
     {
         startButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneController.Instance.NextLevel();
         });
         
-        quitButton.onClick.AddListener(() =>
-        {
-            Application.Quit();
-        });
+        quitButton.onClick.AddListener(Application.Quit);
     }
 }
