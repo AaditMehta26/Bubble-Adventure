@@ -1,6 +1,7 @@
 using System.Collections;
 using _Scripts.Manager;
 using Unity.Mathematics.Geometry;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -116,16 +117,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTrigger2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Finish"))
         {
             SceneController.Instance.NextLevel();
         }
         
-        else if (collision.gameObject.CompareTag("Fan"))
+
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Fan"))
         {
-             _playerRb.linearVelocity += (Vector2)transform.up * fanForce;
+            _playerRb.linearVelocity += (Vector2)collision.transform.up * fanForce;
         }
     }
 
