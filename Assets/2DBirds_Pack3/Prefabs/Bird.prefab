@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 2241379014476249225}
   m_Layer: 0
   m_Name: Bird 4 Pink_0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos1: {fileID: 6815093162178609354}
   pos2: {fileID: 9081716308944251410}
-  birdspeed: 20
+  birdspeed: 7
 --- !u!61 &6844698789391842947
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -318,7 +318,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.08028895, y: -0.7493701}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -328,7 +328,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 5.17, y: 2.8}
+  m_Size: {x: 2.9388943, y: 1.75179}
   m_EdgeRadius: 0
 --- !u!50 &2241379014476249225
 Rigidbody2D:
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 3329234234599369118}
   m_Layer: 0
   m_Name: Bird
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
