@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Serialization;
 
 public class AudioManager : Singleton<AudioManager>
@@ -10,9 +11,11 @@ public class AudioManager : Singleton<AudioManager>
     public AudioClip musicClip;
     public AudioClip deathClip;
     public AudioClip dashClip;
+    public AudioClip popdashClip;
     public AudioClip uiPopClip;
     public void Start() {
         musicSource.clip = musicClip;
+        musicSource.loop = true;
         musicSource.Play();
     }
 

@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
         
         indicator.gameObject.SetActive(false);
         AudioManager.Instance.PlaySound(AudioManager.Instance.dashClip);
+        AudioManager.Instance.PlaySound(AudioManager.Instance.popdashClip);
     }
 
     private void ApplyForce(Vector2 dragVector)

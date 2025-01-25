@@ -589,6 +589,7 @@ MonoBehaviour:
   musicClip: {fileID: 8300000, guid: f027370cc33f8fa4283840cdb3de0a9d, type: 3}
   deathClip: {fileID: 8300000, guid: 39f38899554bc4649b897441771f6fd1, type: 3}
   dashClip: {fileID: 8300000, guid: e3556734b41568845977911b0365d5a2, type: 3}
+  popdashClip: {fileID: 8300000, guid: e67cb09ee4f9fc149b238568342f76a4, type: 3}
   uiPopClip: {fileID: 8300000, guid: 39f38899554bc4649b897441771f6fd1, type: 3}
 --- !u!1 &7092706507298670037
 GameObject:
