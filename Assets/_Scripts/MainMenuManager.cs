@@ -14,6 +14,7 @@ public class MainMenuManager : MonoBehaviour
     {
         startButton.onClick.AddListener(() =>
         {
+            AudioManager.Instance.PlaySound(AudioManager.Instance.uiPopClip);
             SceneController.Instance.NextLevel();
         });
         

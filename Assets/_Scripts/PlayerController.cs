@@ -1,7 +1,10 @@
 using System.Collections;
 using _Scripts.Manager;
+using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+
 public class PlayerController : MonoBehaviour
 {
     
@@ -15,8 +18,9 @@ public class PlayerController : MonoBehaviour
         [SerializeField]private float forceAmount;
         [Range(0f, 1f)]
         [SerializeField]private float slomoTime;
-
         [SerializeField] private float rotationSpeed;
+        [SerializeField] private float fanForce;
+        [SerializeField] private float maxStrength;
     #endregion
     #region Fields
     //references
@@ -74,9 +78,10 @@ public class PlayerController : MonoBehaviour
         {
             float angle = Mathf.Atan2(_dragVector.x, -_dragVector.y) * Mathf.Rad2Deg;
             
-            var strength = _dragVector.magnitude/80;
+            var strength = _dragVector.magnitude/100;
             var direction =- _dragVector.normalized;
-
+            
+            strength=Mathf.Clamp(strength,strength,maxStrength);
             indicator.transform.position =  Vector3.ClampMagnitude((Vector2)transform.position + direction * strength, maxVelocity);
             indicator.rotation = Quaternion.Euler(0, 0, angle);
         }
@@ -92,7 +97,7 @@ public class PlayerController : MonoBehaviour
         ApplyForce(_dragVector);
         
         indicator.gameObject.SetActive(false);
-
+        AudioManager.Instance.PlaySound(AudioManager.Instance.dashClip);
     }
 
     private void ApplyForce(Vector2 dragVector)
@@ -120,7 +125,7 @@ public class PlayerController : MonoBehaviour
         
         else if (collision.gameObject.CompareTag("Fan"))
         {
-            
+             _playerRb.linearVelocity += (Vector2)transform.up * fanForce;
         }
     }
 
@@ -129,6 +134,7 @@ public class PlayerController : MonoBehaviour
         var particle =Instantiate(deathParticles,transform.position,Quaternion.identity);
         particle.gameObject.SetActive(true);
         particle.Play();
+        AudioManager.Instance.PlaySound(AudioManager.Instance.deathClip);
         
         SceneController.Instance.ReLoadScene();
         Destroy(gameObject,0.1f);
