@@ -1,3 +1,4 @@
+using System.Collections;
 using _Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -106,7 +107,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Burst();
+            StartCoroutine(Burst());
         }
     }
 
@@ -116,12 +117,22 @@ public class PlayerController : MonoBehaviour
         {
             SceneController.Instance.NextLevel();
         }
+        
+        else if (collision.gameObject.CompareTag("Fan"))
+        {
+            
+        }
     }
 
-    void Burst()
+    IEnumerator Burst()
     {
-        Instantiate(deathParticles,transform.position,Quaternion.identity).Play();
-        Destroy(gameObject);
+        var particle =Instantiate(deathParticles,transform.position,Quaternion.identity);
+        particle.gameObject.SetActive(true);
+        particle.Play();
+        
+        SceneController.Instance.ReLoadScene();
+        Destroy(gameObject,0.1f);
+        yield return new WaitForSeconds(particle.main.duration);
     }
 
     private void OnDisable()
