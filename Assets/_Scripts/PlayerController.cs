@@ -1,3 +1,4 @@
+using _Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
@@ -109,9 +110,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            SceneController.Instance.NextLevel();
+        }
+    }
+
     void Burst()
     {
         Instantiate(deathParticles,transform.position,Quaternion.identity).Play();
         Destroy(gameObject);
+    }
+
+    private void OnDisable()
+    {
+        _playerActions.Player.Disable();
+        _playerActions.Player.Press.started -= OnPress;
+
+        _playerActions.Player.Press.canceled -= OnLift;
     }
 }

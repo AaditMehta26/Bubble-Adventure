@@ -21,7 +21,7 @@ namespace _Scripts.Manager
 
         public void NextLevel()
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+            StartCoroutine(LoadLevel());
         }
 
         IEnumerator LoadLevel()

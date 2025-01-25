@@ -1,6 +1,7 @@
 using System;
 using _Scripts.Manager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -13,7 +14,7 @@ public class MainMenuManager : MonoBehaviour
     {
         startButton.onClick.AddListener(() =>
         {
-            SceneController.Instance.NextLevel();
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         });
         
         quitButton.onClick.AddListener(() =>
