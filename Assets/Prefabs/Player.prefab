@@ -14866,7 +14866,7 @@ MonoBehaviour:
   forceAmount: 0.1
   slomoTime: 0.251
   rotationSpeed: 50
-  fanForce: 0
+  fanForce: 1
   maxStrength: 2
 --- !u!50 &2065758585643639037
 Rigidbody2D:
