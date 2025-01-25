@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 24981e4f225aef940a4e71e5dad88ae9
+guid: 13643ea7f83f1ae4a86b4cf679520b1b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7919937746995033089
-    second: seedhaArrow_0
+      213: 5049059679262521404
+    second: Level4_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -135,30 +122,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: seedhaArrow_0
+      name: Level4_0
       rect:
         serializedVersion: 2
-        x: 673
-        y: 22
-        width: 445
-        height: 1036
+        x: 0
+        y: 0
+        width: 1506
+        height: 842
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ffb472ba49ab61290800000000000000
-      internalID: -7919937746995033089
+      spriteID: c38b038f60dd11640800000000000000
+      internalID: 5049059679262521404
       vertices: []
       indices: 
       edges: []
@@ -187,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      seedhaArrow_0: -7919937746995033089
+      Level4_0: 5049059679262521404
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
