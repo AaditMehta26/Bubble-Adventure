@@ -7,6 +7,7 @@ TagManager:
   - spike
   - Enemy
   - finish
+  - Fan
   layers:
   - Default
   - TransparentFX
