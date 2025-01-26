@@ -984,6 +984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 944191891}
+  levelSelectButton: {fileID: 2125442499}
   quitButton: {fileID: 1874259872}
 --- !u!224 &1874259869 stripped
 RectTransform:
@@ -1142,6 +1143,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2045195947}
   m_CullTransparentMesh: 1
+--- !u!114 &2125442499 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 853056606443783286, guid: a9f2e423727a6f740a8452276203b170, type: 3}
+  m_PrefabInstance: {fileID: 1548513180}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &384291588952011544
 PrefabInstance:
   m_ObjectHideFlags: 0

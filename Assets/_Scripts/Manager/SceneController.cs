@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,8 @@ namespace _Scripts.Manager
     public class SceneController : Singleton<SceneController>
     {
         private Animator _sceneAnimator;
+        private List<string> _inAnimations = new List<string>{"FadeIn","SlideIn"};
+        private List<string> _outAnimations = new List<string>{"FadeOut","SlideOut"};
 
         protected override void Awake()
         {
@@ -17,6 +20,12 @@ namespace _Scripts.Manager
         public void ReLoadScene()
         {
             StartCoroutine(LoadLevel(0));
+        }
+
+        public void LoadScene(string sceneName)
+        {
+            
+            StartCoroutine(LoadLevel(sceneName));
         }
 
         public void NextLevel()
@@ -33,6 +42,15 @@ namespace _Scripts.Manager
             else
                 SceneManager.LoadScene(0);
             _sceneAnimator.Play("FadeOut");
+        }
+        
+        IEnumerator LoadLevel(string sceneName)
+        {
+            _sceneAnimator.Play("FadeIn");
+            yield return new WaitForSeconds(1.0f);
+ 
+                SceneManager.LoadSceneAsync(sceneName).completed += ctx => _sceneAnimator.Play("FadeOut");;
+            
         }
     }
 }
