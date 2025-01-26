@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField]private Button startButton;
+    [SerializeField]private Button levelSelectButton;
     [SerializeField]private Button quitButton;
 
     private void Awake()
@@ -17,7 +18,18 @@ public class MainMenuManager : MonoBehaviour
             AudioManager.Instance.PlaySound(AudioManager.Instance.uiPopClip);
             SceneController.Instance.NextLevel();
         });
+
+        levelSelectButton.onClick.AddListener(() =>
+        {
+            AudioManager.Instance.PlaySound(AudioManager.Instance.uiPopClip);
+            SceneController.Instance.LoadScene("LevelSelect");
+        });
         
-        quitButton.onClick.AddListener(Application.Quit);
+        quitButton.onClick.AddListener(() =>
+        {
+            AudioManager.Instance.PlaySound(AudioManager.Instance.uiPopClip);
+            Application.Quit();
+        });
+        
     }
 }
