@@ -11,12 +11,12 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]private Button levelSelectButton;
     [SerializeField]private Button quitButton;
 
-    private void Awake()
+    private void Start()
     {
         startButton.onClick.AddListener(() =>
         {
             AudioManager.Instance.PlaySound(AudioManager.Instance.uiPopClip);
-            SceneController.Instance.NextLevel();
+            SceneController.Instance.LoadScene("L1");
         });
 
         levelSelectButton.onClick.AddListener(() =>
